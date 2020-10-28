@@ -35,8 +35,7 @@ describe DockingStation do
 
   context 'when dock is called' do 
     it 'raises an error if capacity is full' do
-      max_capacity = DockingStation::DEFAULT_CAPACITY
-      max_capacity.times { subject.dock(Bike.new) }
+      DockingStation::DEFAULT_CAPACITY.times { subject.dock(Bike.new) }
       expect { subject.dock(Bike.new) }.to raise_error(RuntimeError)
     end
   end
