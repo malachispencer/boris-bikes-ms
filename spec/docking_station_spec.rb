@@ -39,4 +39,10 @@ describe DockingStation do
       expect { subject.dock(Bike.new) }.to raise_error(RuntimeError)
     end
   end
+
+  context 'when class is instantiated' do
+    it 'allows user to set a capacity instance variable' do
+      
+    end
+  end
 end
