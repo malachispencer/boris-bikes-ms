@@ -41,8 +41,9 @@ describe DockingStation do
   end
 
   context 'when class is instantiated' do
+    let(:station) { DockingStation.new(77) }
     it 'allows user to set a capacity instance variable' do
-      
+      expect(station.capacity).to eq(77)
     end
   end
 end
