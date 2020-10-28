@@ -46,4 +46,10 @@ describe DockingStation do
       expect(station.capacity).to eq(77)
     end
   end
+
+  context 'when class is instantiated' do
+    it "default capacity of 20 is set if user doesn't set a capacity" do
+      expect(subject.capacity).to eq(20)
+    end
+  end
 end
