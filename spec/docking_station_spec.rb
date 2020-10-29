@@ -12,9 +12,13 @@ describe DockingStation do
       expect(subject.capacity).to eq(20)
     end
 
-    let(:docked_station) { DockingStation.new(33, 33) }
-    it 'contains an array with user defined docked amount of bikes' do 
-      expect(docked_station.bikes.length).to eq(33)
+    it 'contains an array with user defined docked amount of bikes' do
+      expect(station.bikes.length).to eq(77)
+    end
+
+    let(:false_station) { DockingStation.new(21) }
+    it 'raises error if user sets higher docked than capacity' do
+      expect { false_station }.to raise_error('Docked must be less than or equal to capacity')
     end
   end
 
