@@ -7,7 +7,7 @@ describe Bike do
     end
   end
 
-  context 'when working? is called' do 
+  context 'when working? is called' do
     it 'expects bike to be working' do
       expect(subject.working?).to eq(true)
     end
