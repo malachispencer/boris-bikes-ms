@@ -6,6 +6,7 @@ class DockingStation
   DEFAULT_CAPACITY = 20
 
   def initialize(docked = DEFAULT_CAPACITY, capacity = DEFAULT_CAPACITY)
+    raise 'Docked must be less than or equal to capacity' if docked > capacity
     @capacity = capacity
     @bikes = Array.new(docked) { Bike.new }
   end
