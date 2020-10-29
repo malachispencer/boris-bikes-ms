@@ -51,13 +51,14 @@ describe DockingStation do
   end
 
   context '#dock' do
+    let(:bike) { double :bike }
     it 'raises an error if capacity is full' do
-      expect { subject.dock(Bike.new) }.to raise_error('Docking station full')
+      expect { subject.dock(bike) }.to raise_error('Docking station full')
     end
 
     let(:station) { DockingStation.new(19) }
     it 'pushes a bike into the bikes array' do
-      expect { station.dock(Bike.new) }.to change { station.bikes.length }.by(1)
+      expect { station.dock(bike) }.to change { station.bikes.length }.by(1)
     end
   end
 
