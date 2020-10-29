@@ -5,9 +5,9 @@ class DockingStation
 
   DEFAULT_CAPACITY = 20
 
-  def initialize(capacity = DEFAULT_CAPACITY)
-    @bikes = []
+  def initialize(docked = DEFAULT_CAPACITY, capacity = DEFAULT_CAPACITY)
     @capacity = capacity
+    @bikes = Array.new(docked) { Bike.new }
   end
 
   def release_bike
