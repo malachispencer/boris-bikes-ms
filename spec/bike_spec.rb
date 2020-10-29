@@ -12,4 +12,11 @@ describe Bike do
       expect(subject.working?).to eq(true)
     end
   end
+
+  context 'when class is instantiated' do
+    let(:bike) { Bike.new(false) }
+    it 'allows user to set working attribute' do
+      expect(bike.working).to eq(false)
+    end
+  end
 end
