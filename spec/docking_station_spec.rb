@@ -9,7 +9,7 @@ describe DockingStation do
     end
   end
 
-  context 'when release_bike is called' do 
+  context 'when release_bike is called' do
     it 'returns a bike instance' do
       subject.dock(double(:bike))
       expect(subject.release_bike).to be_instance_of(Bike)
