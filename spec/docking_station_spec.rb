@@ -60,4 +60,11 @@ describe DockingStation do
       expect(subject.release_bike.working?).to eq(true)
     end
   end
+
+  context 'when release bikes is called' do
+    it 'raises error if all bikes are broken' do
+      5.times { subject.dock(Bike.new(false)) }
+      expect{ subject.release_bike }.to raise_error "All bikes currently out of order"
+    end
+  end
 end
