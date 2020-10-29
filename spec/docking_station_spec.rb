@@ -11,6 +11,11 @@ describe DockingStation do
     it "default capacity of 20 is set if user doesn't set a capacity" do
       expect(subject.capacity).to eq(20)
     end
+
+    let(:docked_station) { DockingStation.new(33) }
+    it 'contains an array with capacity amount of bikes' do 
+      expect(docked_station.bikes.length).to eq(33)
+    end
   end
 
   context '#release_bike' do 
