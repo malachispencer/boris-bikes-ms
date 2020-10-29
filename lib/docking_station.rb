@@ -12,7 +12,7 @@ class DockingStation
 
   def release_bike
     raise 'No bikes to release' if @bikes.empty?
-    @bikes.shift
+    @bikes.delete_at( @bikes.index { |bike| bike.working == true } )
   end
 
   def dock(bike)
