@@ -12,6 +12,7 @@ class DockingStation
 
   def release_bike
     raise 'No bikes to release' if @bikes.empty?
+    raise 'All bikes currently out of order' if all_broken?
     @bikes.delete_at( @bikes.index { |bike| bike.working == true } )
   end
 
@@ -24,5 +25,9 @@ class DockingStation
 
   def full?
     @bikes.length >= @capacity
+  end
+
+  def all_broken?
+    @bikes.all? {|bike| bike.working == false}
   end
 end
