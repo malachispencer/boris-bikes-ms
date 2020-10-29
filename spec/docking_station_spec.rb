@@ -52,4 +52,13 @@ describe DockingStation do
       expect(subject.capacity).to eq(20)
     end
   end
+
+  context 'when release bikes is called' do
+    it "doesn't release a bike that is broken" do
+      3.times { subject.dock(Bike.new(false)) }
+      2.times { subject.dock(Bike.new) }
+      p subject
+      expect(subject.release_bike.working?).to eq(true)
+    end
+  end
 end
