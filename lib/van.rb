@@ -7,7 +7,5 @@ class Van
     until station.broken_bikes.empty? do
       garage.garage_bikes << station.broken_bikes.shift
     end
-
-    puts 'Bikes delivered to Garage'
   end
 end

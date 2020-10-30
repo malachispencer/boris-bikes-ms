@@ -5,4 +5,8 @@ class Garage
     @garage_bikes = []
   end
 
+  def repair_bikes
+    @garage_bikes.map { |bike| bike.working = true }
+  end
+
 end
