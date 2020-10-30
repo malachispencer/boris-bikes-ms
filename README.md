@@ -1,6 +1,6 @@
 # Boris Bikes
 
-Program that will emulate London's Boris Bikes system.
+Program that emulates the infrastructure of the London Boris Bikes system.
 
 | Objects       | Messages      | 
 | ------------- |:-------------:| 
