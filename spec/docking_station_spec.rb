@@ -70,4 +70,16 @@ describe DockingStation do
       expect(subject.bikes).to be_instance_of(Array)
     end
   end
+
+  context '#ready_for_repair' do
+    it 'moves all broken bikes to seperate array' do
+      station = DockingStation.new(0)
+      broken_bike = double('broken_bike', :working => false)
+      working_bike = double('broken_bike', :working => true)
+      3.times { station.dock(working_bike) }
+      2.times { station.dock(broken_bike) }
+      broken_bikes = ready_for_repair
+      broken_bikes.each {|bike| expect(bike.working).to eq(false)}
+    end
+  end
 end
