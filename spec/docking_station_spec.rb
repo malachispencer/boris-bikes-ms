@@ -34,7 +34,8 @@ describe DockingStation do
 
     let(:all_broken_station) { DockingStation.new(0) }
     it 'raises an error if all bikes are broken' do
-      3.times { all_broken_station.dock(Bike.new(false)) }
+      broken_bike = double('bike', :working => false)
+      3.times { all_broken_station.dock(broken_bike) }
       expect { all_broken_station.release_bike }.to raise_error('All bikes currently out of order')
     end
 
@@ -44,8 +45,10 @@ describe DockingStation do
 
     let(:some_broken_station) { DockingStation.new(0) }
     it "doesn't release a bike that is broken" do
-      3.times { some_broken_station.dock(Bike.new(false)) }
-      2.times { some_broken_station.dock(Bike.new) }
+      broken_bike = double('broken_bike', :working => false)
+      working_bike = double('working_bike', :working => true)
+      3.times { some_broken_station.dock(broken_bike) }
+      2.times { some_broken_station.dock(working_bike) }
       expect(some_broken_station.release_bike.working).to eq(true)
     end
   end
