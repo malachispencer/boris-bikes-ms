@@ -11,7 +11,8 @@ class Van
   end
 
   def transport_fixed(garage, station)
-    #raise 'Bikes must all be fixed'
+    raise 'Bikes must all be fixed' if garage.garage_bikes.any? {|bike| bike.working == false}
+
     until garage.garage_bikes.empty? do
       station.dock(garage.garage_bikes.shift)
     end
