@@ -24,5 +24,12 @@ describe Van do
       garage = []
       expect { subject.transport_broken(station, garage) }.to change { garage.length }.by(2)
     end
+
+    it "doesn't transport bikes if none are broken" do
+      station = DockingStation.new
+      station.ready_for_repair
+      garage = []
+      expect { subject.transport_broken(station, garage) }.to raise_error('No broken bikes')
+    end
   end
 end
