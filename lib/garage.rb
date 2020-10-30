@@ -8,5 +8,4 @@ class Garage
   def repair_bikes
     @garage_bikes.map { |bike| bike.working = true }
   end
-
 end
