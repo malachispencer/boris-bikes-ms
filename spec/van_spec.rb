@@ -46,5 +46,13 @@ describe Van do
       3.times { garage.garage_bikes << Bike.new }
       expect { subject.transport_fixed(garage, station) }.to change { station.bikes.length }.by(3)
     end
+
+    it "only transports fixed bikes" do
+      garage = Garage.new
+      station = DockingStation.new(0)
+      broken_bike = double('broken_bike', :working => false)
+      3.times { garage.garage_bikes << broken_bike }
+      expect { subject.transport_fixed(garage, station) }.to raise_error('Bikes must all be fixed before transportation')
+    end
   end
 end
