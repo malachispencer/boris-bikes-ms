@@ -31,4 +31,13 @@ describe Van do
       expect { subject.transport_broken(station, Garage.new) }.to raise_error('No broken bikes')
     end
   end
+
+  context '#transport_fixed' do
+    it 'removes fixed bikes from Garage' do
+      garage = Garage.new
+      station = DockingStation.new(0)
+      3.times { garage.garage_bikes << Bike.new }
+      expect { subject.transport_fixed(garage, station) }.to change { garage.garage_bikes.length }.by(3)
+    end
+  end
 end
