@@ -1,5 +1,6 @@
 require 'van'
 require 'docking_station'
+require 'garage'
 
 describe Van do
   context '#transport_broken' do
@@ -10,8 +11,7 @@ describe Van do
       3.times { station.dock(working_bike) }
       2.times { station.dock(broken_bike) }
       station.ready_for_repair
-      garage = []
-      expect { subject.transport_broken(station, garage) }.to change { station.broken_bikes.length }.by(-2)
+      expect { subject.transport_broken(station, Garage.new) }.to change { station.broken_bikes.length }.by(-2)
     end
 
     it 'places broken bikes in Garage' do
@@ -21,15 +21,14 @@ describe Van do
       3.times { station.dock(working_bike) }
       2.times { station.dock(broken_bike) }
       station.ready_for_repair
-      garage = []
-      expect { subject.transport_broken(station, garage) }.to change { garage.length }.by(2)
+      garage = Garage.new
+      expect { subject.transport_broken(station, garage) }.to change { garage.garage_bikes.length }.by(2)
     end
 
     it "doesn't transport bikes if none are broken" do
       station = DockingStation.new
       station.ready_for_repair
-      garage = []
-      expect { subject.transport_broken(station, garage) }.to raise_error('No broken bikes')
+      expect { subject.transport_broken(station, Garage.new) }.to raise_error('No broken bikes')
     end
   end
 end
