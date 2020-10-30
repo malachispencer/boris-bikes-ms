@@ -75,11 +75,11 @@ describe DockingStation do
     it 'moves all broken bikes to seperate array' do
       station = DockingStation.new(0)
       broken_bike = double('broken_bike', :working => false)
-      working_bike = double('broken_bike', :working => true)
+      working_bike = double('working_bike', :working => true)
       3.times { station.dock(working_bike) }
       2.times { station.dock(broken_bike) }
-      broken_bikes = ready_for_repair
-      broken_bikes.each {|bike| expect(bike.working).to eq(false)}
+      station.ready_for_repair
+      station.broken_bikes.each {|bike| expect(bike.working).to eq(false)}
     end
   end
 end

@@ -1,7 +1,7 @@
 require_relative './bike.rb'
 
 class DockingStation
-  attr_reader :bikes, :capacity
+  attr_reader :bikes, :capacity, :broken_bikes
 
   DEFAULT_CAPACITY = 20
 
@@ -20,6 +20,17 @@ class DockingStation
   def dock(bike)
     raise 'Docking station full' if full?
     @bikes.push(bike)
+  end
+
+  def ready_for_repair
+    @broken_bikes = []
+
+    while @bikes.any? {|bike| !bike.working} do
+      broken = @bikes.index {|bike| !bike.working}
+      @broken_bikes << @bikes.slice!(broken)
+    end
+
+    @broken_bikes
   end
 
   private
