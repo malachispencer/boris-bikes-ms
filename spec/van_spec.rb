@@ -37,7 +37,7 @@ describe Van do
       garage = Garage.new
       station = DockingStation.new(0)
       3.times { garage.garage_bikes << Bike.new }
-      expect { subject.transport_fixed(garage, station) }.to change { garage.garage_bikes.length }.by(3)
+      expect { subject.transport_fixed(garage, station) }.to change { garage.garage_bikes.length }.by(-3)
     end
   end
 end
