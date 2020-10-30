@@ -5,7 +5,7 @@ class Van
     raise 'No broken bikes' if station.broken_bikes.empty?
 
     until station.broken_bikes.empty? do
-      garage.bikes << station.broken_bikes.shift
+      garage.garage_bikes << station.broken_bikes.shift
     end
 
     puts 'Bikes delivered to Garage'

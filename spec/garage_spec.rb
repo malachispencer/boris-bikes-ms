@@ -12,8 +12,9 @@ describe Garage do
       2.times { station.dock(broken_bike) }
       station.ready_for_repair
       van.transport_broken(station, subject)
-      expect(subject.bikes).to be_instance_of(Array)
+      subject.garage_bikes.each do |bike|
+        expect(bike.working).to eq(false)
+      end
     end
-    
   end
 end
