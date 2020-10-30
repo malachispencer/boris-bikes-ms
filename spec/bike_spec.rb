@@ -8,13 +8,9 @@ describe Bike do
     end
   end
 
-  context '#working?' do
-    it 'can be used on a Bike object' do
-      expect(subject).to respond_to(:working?)
-    end
-
+  context 'working attr accessor' do
     it 'expects bike to be working' do
-      expect(subject.working?).to eq(true)
+      expect(subject.working).to eq(true)
     end
   end
 end
