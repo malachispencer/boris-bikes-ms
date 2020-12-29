@@ -1,6 +1,6 @@
 # Boris Bikes
 
-Program that emulates the infrastructure of the London Boris Bikes system.
+Program that emulates the infrastructure of the London Boris Bikes system. Makers week one afternoon challenge, providing a solid introduction into Object-Oriented Programming, test driven development and debugging.
 
 | Objects       | Messages      | 
 | ------------- |:-------------:| 
